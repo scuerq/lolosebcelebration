@@ -20,10 +20,13 @@
 <body>
 
   <!-- Bannière -->
-  <header data-aos="fade-down">
+  <header class="main-header" data-aos="fade-down">
     <img src="data/logo_header.png" alt="Lolo &amp; Seb" class="header-logo">
-
-    <div class="countdown mt-4" id="countdown"></div>
+    <h1 class="header-title">Lolo &amp; Seb</h1>
+    <p class="header-date">20 décembre 2025 • Saint Paul</p>
+    <div class="countdown-box">
+      <div id="countdown" class="countdown-text"></div>
+    </div>
   </header>
 
   <!-- Titre + bouton retour -->
@@ -77,6 +80,7 @@
   <script src="scripts/src/aos.js"></script>
   <script src="scripts/src/glightbox.min.js"></script>
   <script src="scripts/src/galery.js"></script>
+  <script src="scripts/src/countdown.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
