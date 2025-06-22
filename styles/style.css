@@ -28,7 +28,7 @@ body::before {
 }
 
 header {
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(../images/header-bg.jpg);
+    
     background-attachment: local;
 
     background-size: cover; /* Remplit tout le header */
