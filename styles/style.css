@@ -29,14 +29,11 @@ body::before {
 
 header {
     position: relative;
-    background-image: url("../video/preview.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-color: var(--accent-color);
     text-align: center;
-    padding: 8rem 3rem;
+    padding: 4rem 1rem;
     color: white;
-    min-height: 60vh;
+    min-height: 50vh;
     flex-direction: column;
     display: flex;
     justify-content: center;
@@ -59,6 +56,28 @@ header::before {
 .hero-content {
     position: relative;
     z-index: 1;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.banner-nav {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.banner-nav .nav-link {
+    color: #fff;
+}
+
+.banner-nav .nav-link:hover {
+    color: var(--highlight-color);
 }
 header h1 {
       font-family: 'Playfair Display', serif;
@@ -209,10 +228,10 @@ header img {
 }
 
 .header-logo {
-  max-width: 400px;
+  max-width: 120px;
   width: 100%;
   height: auto;
-  margin: 0 auto 1rem;
+  margin: 0;
 }
 
 .countdown-box {
