@@ -21,7 +21,8 @@
 
   <!-- Bannière -->
   <header data-aos="fade-down">
-   
+    <img src="data/logo_header.png" alt="Lolo &amp; Seb" class="header-logo">
+
     <div class="countdown mt-4" id="countdown"></div>
   </header>
 
