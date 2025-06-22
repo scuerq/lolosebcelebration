@@ -13,7 +13,22 @@ body {
     color: var(--text-dark);
 }
 
+/* watermark background */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("../data/logo_header.png") center/60% no-repeat;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: -1;
+}
+
 header {
+    position: relative;
     background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(../images/header-bg.jpg);
     background-attachment: local;
 
@@ -21,14 +36,14 @@ header {
     background-repeat: no-repeat; /* Empêche la répétition si l'image est plus petite */
     background-position: center; /* Centre l'image dans le header */
 
-    text-align: left;
+    text-align: center;
     padding: 6rem 3rem;
     color: white;
     min-height: 350px;
     flex-direction: column;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     max-width: 1140px;
     margin-left: auto;
     margin-right: auto;
@@ -187,6 +202,28 @@ button:hover {
 header img {
   display: block;
   height: auto;
+  max-width: 100%;
+}
+
+.header-logo {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1rem;
+}
+
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin: 0.5rem 0;
+  color: #fafcff;
+}
+
+.header-date {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .countdown-box {
@@ -225,6 +262,15 @@ header img {
   white-space: nowrap; /* ✅ aussi ici */
 }
 
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.countdown-animate {
+  animation: pop 0.7s ease;
+}
+
 @media (max-width: 768px) {
   .countdown-box {
     padding: 1rem 1.5rem;
@@ -232,5 +278,9 @@ header img {
   }
   .countdown-text {
     font-size: 1.4rem;
+  }
+  header {
+    padding: 4rem 1rem;
+    min-height: 250px;
   }
 }
