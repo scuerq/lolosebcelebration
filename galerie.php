@@ -19,10 +19,26 @@
 </head>
 <body>
 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Lolo &amp; Seb</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="galerie.php">Galerie</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/temoignage.html">Témoignage</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <!-- Bannière -->
-  <header class="hero" data-aos="fade-down">
+  <header class="hero" data-aos="fade-down" style="margin-top:56px;">
     <div class="hero-content">
-      <img src="data/logo_header.png" alt="Lolo &amp; Seb" class="header-logo">
+      <img src="data/logo_header.png" alt="Lolo &amp; Seb" class="header-logo" loading="lazy">
       <h1>Lolo &amp; Seb</h1>
       <p>20&nbsp;Décembre&nbsp;2025 – Saint-Paul</p>
       <div class="countdown-box">
@@ -32,7 +48,7 @@
   </header>
 
   <!-- Titre + bouton retour -->
-  <section class="container text-start" style="max-width: 1140px; margin: 0 auto 3rem;">
+  <section class="container text-start my-4" style="max-width: 1140px;">
     <div class="mb-3">
       <a href="index.html" class="btn btn-outline-secondary">
         <i class="fa-solid fa-arrow-left"></i> Retour à l'accueil
@@ -50,7 +66,7 @@
   </div>
 
   <!-- Galerie -->
-  <main class="container" data-aos="fade-up" style="max-width: 1140px; margin: 2rem auto 3rem; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+  <main class="container bg-white p-4 rounded shadow" data-aos="fade-up" style="max-width: 1140px; margin: 2rem auto 3rem;">
     <div class="row mb-4" data-aos="fade-up">
       <div class="col-md-8">
         <div class="btn-group" role="group" aria-label="Catégories">
@@ -80,6 +96,7 @@
   <!-- Scripts -->
   <script src="scripts/src/bootstrap.bundle.min.js"></script>
   <script src="scripts/src/aos.js"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
   <script src="scripts/src/glightbox.min.js"></script>
   <script src="scripts/src/galery.js"></script>
   <script src="scripts/countdown.js"></script>
