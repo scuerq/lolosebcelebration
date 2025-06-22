@@ -28,9 +28,9 @@ body::before {
 }
 
 header {
-    
+    position: relative;
+    background-image: url("../images/header-bg.jpg");
     background-attachment: local;
-
     background-size: cover; /* Remplit tout le header */
     background-repeat: no-repeat; /* Empêche la répétition si l'image est plus petite */
     background-position: center; /* Centre l'image dans le header */
@@ -50,6 +50,17 @@ header {
     overflow: hidden;
     box-sizing: border-box;
     background-clip: padding-box;
+}
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 header h1 {
       font-family: 'Playfair Display', serif;
@@ -208,10 +219,7 @@ header img {
 
 .countdown-box {
   display: inline-block;
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 2rem auto 1rem;
   padding: 1.5rem 2rem;
   border: 3px solid var(--highlight-color);
   border-radius: 15px;
@@ -220,7 +228,6 @@ header img {
     0 0 10px var(--highlight-color),
     0 0 20px #ffcc00,
     0 0 40px #ffaa00;
-  margin: 1rem auto;
   text-align: center;
   max-width: 90vw;           /* ✅ limite la largeur sur mobile */
   white-space: nowrap;       /* ✅ évite le retour à la ligne intempestif */
@@ -241,11 +248,14 @@ header img {
   word-wrap: break-word;
   white-space: nowrap; /* ✅ aussi ici */
 }
+.countdown-number {
+  color: var(--highlight-color);
+  padding: 0 0.25rem;
+}
 
 @media (max-width: 768px) {
   .countdown-box {
     padding: 1rem 1.5rem;
-    bottom: 1rem;
   }
   .countdown-text {
     font-size: 1.4rem;
