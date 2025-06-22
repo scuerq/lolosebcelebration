@@ -1,15 +1,23 @@
+:root {
+    --accent-color: #1e1e2f;
+    --highlight-color: #ffd700;
+    --text-dark: #2c2c2c;
+    --bg-light: #f9f9f9;
+}
+
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
+    background-color: var(--bg-light);
     margin: 0;
     padding: 0;
+    color: var(--text-dark);
 }
 
 header {
-    background-image: url(../images/header-bg.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(../images/header-bg.jpg);
     background-attachment: local;
 
-    background-size: contain; /* Affiche toute l'image sans la couper */
+    background-size: cover; /* Remplit tout le header */
     background-repeat: no-repeat; /* Empêche la répétition si l'image est plus petite */
     background-position: center; /* Centre l'image dans le header */
 
@@ -83,13 +91,13 @@ button:hover {
 }
  body {
       font-family: 'Open Sans', sans-serif;
-      background: #f9f9f9;
-      color: #2c2c2c;
+      background: var(--bg-light);
+      color: var(--text-dark);
     }
     
     
     .btn-custom {
-      background-color: #1e1e2f;
+      background-color: var(--accent-color);
       color: white;
       border: none;
       border-radius: 8px;
@@ -99,13 +107,19 @@ button:hover {
       transition: all 0.3s ease;
     }
     .btn-custom:hover {
-      background-color: #ffd700;
-      color: #1e1e2f;
+      background-color: var(--highlight-color);
+      color: var(--accent-color);
       transform: translateY(-2px);
     }
     section {
       padding: 3rem 1rem;
     }
+
+@media (max-width: 576px) {
+  section {
+    padding: 2rem 1rem;
+  }
+}
     video {
       width: 100%;
       border-radius: 12px;
@@ -117,7 +131,7 @@ button:hover {
     }
    
     .timeline {
-      border-left: 4px solid #1e1e2f;
+      border-left: 4px solid var(--accent-color);
       padding-left: 2rem;
       margin-top: 2rem;
     }
@@ -126,10 +140,10 @@ button:hover {
     }
     .timeline-item h5 {
       margin-bottom: 0.3rem;
-      color: #1e1e2f;
+      color: var(--accent-color);
     }
     footer {
-      background: #1e1e2f;
+      background: var(--accent-color);
       color: white;
       text-align: center;
       padding: 2rem 1rem;
@@ -142,7 +156,7 @@ button:hover {
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
     #temoignageModal .modal-header {
-      background-color: #1e1e2f;
+      background-color: var(--accent-color);
       color: white;
     }
 
@@ -178,15 +192,15 @@ header img {
 .countdown-box {
   display: inline-block;
   position: absolute;
-  top: 80%;
-  left: 20%;
-  transform: translate(-50%, -50%);
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 1.5rem 2rem;
-  border: 3px solid #ffd700;
+  border: 3px solid var(--highlight-color);
   border-radius: 15px;
   background-color: rgba(30, 30, 47, 0.85);
   box-shadow:
-    0 0 10px #ffd700,
+    0 0 10px var(--highlight-color),
     0 0 20px #ffcc00,
     0 0 40px #ffaa00;
   margin: 1rem auto;
@@ -200,10 +214,10 @@ header img {
 .countdown-text {
   font-size: 2rem;
   font-weight: bold;
-  color: #ffd700;
+  color: var(--highlight-color);
   text-shadow:
-    0 0 5px #ffd700,
-    0 0 10px #ffd700,
+    0 0 5px var(--highlight-color),
+    0 0 10px var(--highlight-color),
     0 0 20px #ffcc00,
     0 0 30px #ffaa00;
   overflow-wrap: break-word;
@@ -214,6 +228,7 @@ header img {
 @media (max-width: 768px) {
   .countdown-box {
     padding: 1rem 1.5rem;
+    bottom: 1rem;
   }
   .countdown-text {
     font-size: 1.4rem;
