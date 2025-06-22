@@ -20,13 +20,13 @@
 </head>
 <body>
 
-  <header data-aos="fade-down">
-    <!-- <h1> Lolo & Seb</h1>
-    <p>20 décembre 2025 • Saint Paul</p> -->
-     
+  <header class="main-header" data-aos="fade-down">
+    <img src="data/logo_header.png" alt="Lolo &amp; Seb" class="header-logo">
+    <h1 class="header-title">Lolo &amp; Seb</h1>
+    <p class="header-date">20 décembre 2025 • Saint Paul</p>
     <div class="countdown-box">
-        <div id="countdown" class="countdown-text"></div>
-      </div>
+      <div id="countdown" class="countdown-text"></div>
+    </div>
   </header>
 
   <main class="container">
@@ -108,30 +108,7 @@
   <script src="scripts/src/aos.js"></script>
   <script>
     AOS.init({ once: true, duration: 1000, offset: 100 });
-
-   
-
-    // Compte à rebours
-    const countdown = document.getElementById("countdown");
-    const eventDate = new Date("2025-12-20T14:00:00").getTime();
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const distance = eventDate - now;
-
-      if (distance < 0) {
-        countdown.innerHTML = "C'est le grand jour ! ߎ";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-     
-
-      countdown.innerHTML = `${days}j /  ${hours}h`;
-    };
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
   </script>
+  <script src="scripts/src/countdown.js"></script>
 </body>
 </html>
