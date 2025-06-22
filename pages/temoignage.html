@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Témoignages – Lolo & Seb</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+ <!-- perso -->
+  <link href="../styles/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+  <style>
+    /* Votre CSS existant inchangé */
+    
+
+    main.container {
+      max-width: 1140px;
+      margin: 2rem auto 3rem;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #19408c;
+    }
+
+    form .form-label {
+      font-weight: 600;
+    }
+
+   
+    .testimonial {
+      border-bottom: 1px solid #ddd;
+      padding: 1rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .testimonial img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #19408c;
+    }
+
+    .testimonial-content {
+      flex-grow: 1;
+    }
+
+    .testimonial-content h5 {
+      margin: 0 0 0.3rem;
+      color: #1e1e2f;
+      font-weight: 700;
+    }
+
+    .testimonial-content small {
+      color: #555;
+      font-style: italic;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .testimonial-content p {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 2rem;
+      font-weight: 600;
+      color: #1e1e2f;
+      text-decoration: none;
+      border: 2px solid #1e1e2f;
+      padding: 0.5rem 1.5rem;
+      border-radius: 8px;
+      max-width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background-color: #1e1e2f;
+      color: #ffd700;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header data-aos="fade-down">
+    <!-- <h1>Lolo & Seb</h1>
+    <p>20 décembre 2025 • Saint Paul</p> -->
+   
+    <div class="countdown mt-4" id="countdown"></div>
+  </header>
+
+  <main class="container">
+    <h2>Laissez votre témoignage</h2>
+
+    <form id="testimonialForm" enctype="multipart/form-data" method="POST">
+      <div class="mb-3">
+        <label for="name" class="form-label">Votre nom *</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Ex : Marie" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="music" class="form-label">Votre morceau de musique favori (optionnel)</label>
+        <input type="text" class="form-control" id="music" name="music" placeholder="Ex : 'La Vie en Rose' d'Édith Piaf">
+      </div>
+
+      <div class="mb-3">
+        <label for="photo" class="form-label">Photo (optionnel)</label>
+        <input type="file" class="form-control" id="photo" name="photo[]" accept="image/*" multiple>
+      </div>
+
+      <div class="mb-3">
+        <label for="message" class="form-label">Votre message *</label>
+        <textarea class="form-control" id="message" name="message" rows="4" placeholder="Votre mot doux..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-custom">Envoyer</button>
+    </form>
+
+    <hr class="my-5">
+
+    <h2>Témoignages reçus</h2>
+    <div id="testimonialsList">
+      <!-- Les témoignages chargés depuis le serveur s'afficheront ici -->
+    </div>
+
+    <a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Lolo & Seb – Tous droits réservés</p>
+  </footer>
+
+  
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('#testimonialForm');
+    const testimonialsList = document.querySelector('#testimonialsList');
+
+    if (!form || !testimonialsList) {
+      console.error('Formulaire ou liste des témoignages introuvable dans le DOM.');
+      return;
+    }
+
+    let glightboxInstance = null;
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    async function loadTestimonials() {
+      try {
+        const response = await fetch('get_testimonials.php');
+        const result = await response.json();
+
+        if (!result.success || !Array.isArray(result.temoignages)) {
+          testimonialsList.innerHTML = '<p class="text-danger text-center">Erreur de chargement des témoignages.</p>';
+          return;
+        }
+
+        testimonialsList.innerHTML = '';
+
+        result.temoignages.forEach(t => {
+          const div = document.createElement('div');
+          div.className = 'testimonial';
+
+          const groupId = `temoignage-${t.id}`;
+          const allPhotos = [t.photo, ...(t.photos || [])].filter(Boolean);
+          let lightboxLinks = '';
+
+          allPhotos.forEach((imgUrl, i) => {
+            lightboxLinks += `
+              <a href="${imgUrl}" class="glightbox" data-gallery="${groupId}" data-title="Photo ${i + 1} de ${escapeHtml(t.nom)}">
+                ${i === 0 ? `<img src="${imgUrl}" alt="Photo de ${escapeHtml(t.nom)}" class="testimonial-img">` : ''}
+              </a>
+            `;
+          });
+
+          div.innerHTML = `
+            ${lightboxLinks}
+            <div class="testimonial-content">
+              <h5>${escapeHtml(t.nom)}</h5>
+              ${t.musique ? `<small>Morceau favori : ${escapeHtml(t.musique)}</small>` : ''}
+              <p>${escapeHtml(t.message)}</p>
+              <a href="temoignage_detail.php?id=${t.id}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">
+                Voir ce témoignage
+              </a>
+            </div>
+          `;
+
+          testimonialsList.appendChild(div);
+        });
+
+        if (glightboxInstance) glightboxInstance.destroy();
+        glightboxInstance = GLightbox({ selector: '.glightbox' });
+
+      } catch (error) {
+        testimonialsList.innerHTML = '<p class="text-danger text-center">Erreur réseau ou serveur.</p>';
+        console.error('Erreur lors du chargement des témoignages :', error);
+      }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('save_testimonial.php', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          alert('Merci pour votre témoignage 🥰');
+          form.reset();
+          loadTestimonials();
+        } else {
+          alert('Erreur : ' + (result.error || 'Erreur inconnue'));
+        }
+      } catch (error) {
+        alert('Erreur réseau ou serveur');
+        console.error(error);
+      }
+    });
+
+    loadTestimonials();
+  });
+</script>
+
+
+  <script src="../scripts/src/bootstrap.bundle.min.js"></script>
+  <script src="../scripts/src/glightbox.min.js"></script>
+
+</body>
+</html>
