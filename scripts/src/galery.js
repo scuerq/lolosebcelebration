@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (item.type === 'photo') {
         content = `
           <a href="${item.src}" class="glightbox" data-gallery="media-gallery" data-title="${item.title}">
-            <img src="${item.src}" alt="${item.title}" class="img-fluid media-thumb shadow-sm rounded" />
+            <img src="${item.src}" alt="${item.title}" loading="lazy" class="img-fluid media-thumb shadow-sm rounded" />
           </a>
         `;
       } else if (item.type === 'video') {
@@ -80,14 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     window.glightboxGallery = GLightbox({ selector: '.glightbox' });
-    
-    setTimeout(() => {
-      if (window.glightboxGallery) {
-        console.log('GLightbox actif');
-      } else {
-        console.warn('GLightbox non initialisé');
-      }
-    }, 500);
+
+    if (window.masonryInstance) {
+      window.masonryInstance.destroy();
+    }
+    window.masonryInstance = new Masonry(gallery, {
+      itemSelector: '.col-6',
+      percentPosition: true
+    });
   };
 
   // Admin (triple A)

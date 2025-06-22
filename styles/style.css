@@ -29,15 +29,14 @@ body::before {
 
 header {
     position: relative;
-    background-attachment: local;
-    background-size: cover; /* Remplit tout le header */
-    background-repeat: no-repeat; /* Empêche la répétition si l'image est plus petite */
-    background-position: center; /* Centre l'image dans le header */
-
+    background-image: url("../video/preview.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     text-align: center;
-    padding: 6rem 3rem;
+    padding: 8rem 3rem;
     color: white;
-    min-height: 350px;
+    min-height: 60vh;
     flex-direction: column;
     display: flex;
     justify-content: center;
@@ -261,6 +260,6 @@ header img {
   }
   header {
     padding: 4rem 1rem;
-    min-height: 250px;
+    min-height: 40vh;
   }
 }

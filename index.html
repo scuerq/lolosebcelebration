@@ -20,9 +20,25 @@
 </head>
 <body>
 
-  <header class="hero" data-aos="fade-down">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Lolo &amp; Seb</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="galerie.php">Galerie</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/temoignage.html">Témoignage</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" data-aos="fade-down" style="margin-top:56px;">
     <div class="hero-content">
-      <img src="data/logo_header.png" alt="Lolo &amp; Seb" class="header-logo">
+      <img src="data/logo_header.png" alt="Lolo &amp; Seb" class="header-logo" loading="lazy">
       <h1>Lolo &amp; Seb</h1>
       <p>20&nbsp;Décembre&nbsp;2025 – Saint-Paul</p>
       <div class="countdown-box">
@@ -33,7 +49,7 @@
 
   <main class="container">
     <section data-aos="zoom-in">
-      <video controls poster="video/preview.jpg" aria-label="Souvenirs vidéo">
+      <video controls preload="metadata" poster="video/preview.jpg" aria-label="Souvenirs vidéo">
         <source src="video/video.mp4" type="video/mp4">
         Votre navigateur ne supporte pas la vidéo.
       </video>
@@ -51,16 +67,15 @@
 
     <section data-aos="fade-up">
       <h2>Programme des festivités</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h5>vendredi 19.12</h5>
-          <p>Mariage à la mairie.</p>
+      <div class="list-group list-group-flush">
+        <div class="list-group-item">
+          <h5 class="mb-1">Vendredi 19.12</h5>
+          <p class="mb-1">Mariage à la mairie.</p>
         </div>
-        <div class="timeline-item">
-          <h5>samedi 20 decemb'</h5>
-          <p>La Java... mais aussi le jazz, le rock, le maloya, le raggae...</p>
+        <div class="list-group-item">
+          <h5 class="mb-1">Samedi 20 décembre</h5>
+          <p class="mb-1">La Java... mais aussi le jazz, le rock, le maloya, le raggae...</p>
         </div>
-        
       </div>
     </section>
 
