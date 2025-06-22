@@ -29,7 +29,6 @@ body::before {
 
 header {
     position: relative;
-    background-image: url("../images/header-bg.jpg");
     background-attachment: local;
     background-size: cover; /* Remplit tout le header */
     background-repeat: no-repeat; /* Empêche la répétition si l'image est plus petite */
