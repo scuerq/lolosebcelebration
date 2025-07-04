@@ -68,7 +68,7 @@ try {
     </div>
   <?php endif; ?>
 
-  <a href="temoignage.html" class="btn btn-secondary mt-4">← Retour aux témoignages</a>
+  <a href="temoignage.php" class="btn btn-secondary mt-4">← Retour aux témoignages</a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>

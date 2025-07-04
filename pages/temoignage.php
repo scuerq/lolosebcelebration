@@ -103,32 +103,7 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="../index.html">Lolo &amp; Seb</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="../index.html">Accueil</a></li>
-          <li class="nav-item"><a class="nav-link" href="../galerie.php">Galerie</a></li>
-          <li class="nav-item"><a class="nav-link" href="temoignage.html">Témoignage</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <header class="hero" data-aos="fade-down" style="margin-top:56px;">
-    <div class="hero-content">
-      <img src="../data/logo_header.png" alt="Lolo &amp; Seb" class="header-logo" loading="lazy">
-      <h1>Lolo &amp; Seb</h1>
-      <p>20&nbsp;Décembre&nbsp;2025 – Saint-Paul</p>
-      <div class="countdown-box">
-        <span id="countdown" class="countdown-text"></span>
-      </div>
-    </div>
-  </header>
+  <?php $base = '../'; include '../includes/header.php'; ?>
 
   <main class="container">
     <h2>Laissez votre témoignage</h2>
@@ -164,7 +139,7 @@
       <!-- Les témoignages chargés depuis le serveur s'afficheront ici -->
     </div>
 
-    <a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
+    <a href="../index.php" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
   </main>
 
   <div class="toast-container position-fixed top-0 end-0 p-3">
